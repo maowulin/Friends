@@ -145,4 +145,6 @@ $(function(){
 		$(this).parent(".comment").siblings(".dis_cont").children("li:last").remove();
 		hideComm();
 	});
+	
+	
 });
