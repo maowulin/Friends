@@ -6,6 +6,7 @@
 		var cWidth = document.documentElement.clientWidth || document.body.clientWidth;
 		if (!cWidth) {
 			return;
+			
 		};
 		document.documentElement.style.fontSize = cWidth*(100/temWid) + 'px';
 	};
