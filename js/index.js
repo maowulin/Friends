@@ -16,12 +16,9 @@
     document.addEventListener('DOMContentLoaded', recalc, false);
 })(375);
 
-$(function(){
-	//添加向下的图标
-	$(".more i").addClass("laydown");
-	
+function hideComm(){
 	//计算被隐藏的评论数 
-	var flag = true;
+	
 	var dis = $(".dis_cont");
 	for(var i = 0; i<dis.length; i++){
 		//计算回复条数
@@ -29,11 +26,22 @@ $(function(){
 		if(len > 4){
 			$(".more")[i].style.display = "block";
 		}
+		if(len-4<1){
+			$(".more")[i].style.display = "none";
+		}
 		var p = $(".more")[i].children[0].children[0];
 		p.innerText = len-4 + "条";
 	}
+}
+
+$(function(){
+	//添加向下的图标
+	$(".more i").addClass("laydown");
+	
+	hideComm();
 	
 	//显示更多
+	var flag = true;
 	$(".more").on("click", function(){
 		var length = $(this).parent().children("li:nth-child(n+4)").length;
 		if(flag){
@@ -130,4 +138,10 @@ $(function(){
 	});
 	
 	$(".discuss")[1].click();
+	
+	//删除
+	$(".dele").on("click", function(){
+		$(this).parent(".comment").siblings(".dis_cont").children("li:last").remove();
+		hideComm();
+	});
 });
