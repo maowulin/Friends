@@ -19,8 +19,8 @@
 
 function hideComm(){
 	//计算被隐藏的评论数 
-	
 	var dis = $(".dis_cont");
+	
 	for(var i = 0; i<dis.length; i++){
 		//计算回复条数
 		var len = dis[i].children.length;
@@ -32,6 +32,17 @@ function hideComm(){
 		}
 		var p = $(".more")[i].children[0].children[0];
 		p.innerText = len-4 + "条";
+	}
+	
+	//计算删除按钮
+	var cont = $(".contain");
+	var name2 = $(".name").text();
+	var dele = $(".dele");
+	for(var i = 0; i < cont.length; i++) {
+		var name1 = cont[i].children[0].innerText;
+		if(name1 == name2){
+			dele[i].style.display = "block";
+		}
 	}
 }
 
@@ -133,16 +144,9 @@ $(function(){
 		}
 	});
 	
-	//评论 
-	$(".discuss").on("click", function(){
-		$(this).siblings(".dele").show();
-	});
-	
-	$(".discuss")[1].click();
-	
-	//删除
+	//自己的状态加删除操作
 	$(".dele").on("click", function(){
-		$(this).parent(".comment").siblings(".dis_cont").children("li:last").remove();
+		$(this).parent().parent().parent().remove();
 		hideComm();
 	});
 	

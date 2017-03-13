@@ -305,3 +305,13 @@ header {
 	height: 0.1rem;
 }
 
+/*
+ * 底部样式
+ * */
+footer {
+	padding: 0.12rem 0 0.16rem 0;
+	font-size: 0.12rem;
+	color: #ACB1B7;
+	text-align: center;
+	line-height: 0.12rem;
+}
